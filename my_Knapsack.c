@@ -10,7 +10,7 @@ int main() {
     int weights[ITEMS] = {0};
 
     for (int i = 0; i < ITEMS; i++) {
-            scanf(" %s", &temp[i]);
+            scanf(" %s", temp[i]);
             scanf("%d", &values[i]);
             scanf("%d", &weights[i]);
     }
