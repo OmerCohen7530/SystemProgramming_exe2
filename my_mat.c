@@ -56,27 +56,23 @@ int knapSack(int weights[], int values[], int selected_bool[]) {
 
   int help[ITEMS + 1][CAPCITY + 1];
 
-  // אתחול הטבלה
   for (int i = 0; i <= ITEMS; i++) {
     for (int j = 0; j <= CAPCITY; j++) {
       if (i == 0 || j == 0) {
         help[i][j] = 0;
       } else if (weights[i - 1] > j) {
-        // פריט זה לא נכנס לתרמיל
         help[i][j] = help[i - 1][j];
       } else {
-        // בחירת הפריט הנוכחי או אי בחירתו
         help[i][j] = fmax(help[i - 1][j], help[i - 1][j - weights[i - 1]] + values[i - 1]);
       }
     }
   }
 
-  // שחזור הפתרון
+
   int i = ITEMS;
   int j = CAPCITY;
   while (i > 0 && j > 0) {
     if (help[i][j] != help[i - 1][j]) {
-      // פריט i נבחר
       selected_bool[i - 1] = 1;
       j -= weights[i - 1];
     }
